@@ -10,9 +10,10 @@ public class MainDoublyLinkedLists {
     public static void main(String[] args) {
         String stop = "";
         Scanner scanner = new Scanner(System.in);
+        Scanner datos = new Scanner(System.in);
         DoublyLinkedList<String> dllist = new DoublyLinkedList<>();
 
-        while(true!=stop.equals("10")){
+        while(!stop.equals("10")){
 
             System.out.println("\uD83D\uDD01 LISTAS DOBLEMENTE ENLAZADAS \uD83D\uDD01 \n");
             System.out.println("1.Insertar al inicio  ");
@@ -34,13 +35,13 @@ public class MainDoublyLinkedLists {
 
                 case "1":
                     System.out.println("Escriba el elemento a agregar al inicio: ");
-                    dllist.insertAtHead(scanner.nextLine());
+                    dllist.insertAtHead(datos.nextLine());
                     break;
 
                 case "2":
                     System.out.println("Escriba el elemento a agregar al final");
-                    dllist.insertAtTail(scanner.nextLine());
-                    dllist.toString();
+                    dllist.insertAtTail(datos.nextLine());
+
                     break;
 
                 case "3":
@@ -50,7 +51,6 @@ public class MainDoublyLinkedLists {
 
                 case "4":
                     dllist.traverseBackward();
-                    scanner.nextLine();
                     break;
 
                 case "5":
@@ -62,36 +62,62 @@ public class MainDoublyLinkedLists {
                         System.out.println("La lista está vacía");
                     }
                     else{
-                        System.out.println("Tamaño de la lista: " + dllist.size() + "\nLa lista contiene los elementos: "+ dllist.toString());
+                        System.out.println("La lista no está vacía, tiene " + dllist.size()+ " elementos" + "\nLa lista contiene: ");
+                        dllist.traverseForward();
                     }
                     break;
 
                 case "7":
                     System.out.println("¿Qué elemento desea buscar?");
-                    DoublyLinkedList<String>.Node<String > buscar = dllist.searchByValue(scanner.nextLine());
+                    String buscar = String.valueOf(dllist.searchByValue(datos.nextLine()));
                     if(buscar == null){
                         System.out.println("No se encontró el elemento");
                     }
                     else{
-                        System.out.println("Elemento "+ buscar.toString());
+                        System.out.println("Elemento encontrado");
+                        System.out.println("en la lista se encuentran los elementos:");
+                        dllist.traverseForward();
                     }
                     break;
 
                 case "8":
                     System.out.println("Ingrese el número de índice del elemento a buscar");
-                    DoublyLinkedList<String>.Node<String > buscarIndex = dllist.searchByIndex(scanner.nextInt());
+                    DoublyLinkedList<String>.Node<String> buscarIndex = dllist.searchByIndex(datos.nextInt());
+                    /*DoublyLinkedList<String>.Node<String > buscarIndex = dllist.searchByIndex(scanner.nextInt());*/
                     if(buscarIndex == null){
                         System.out.println("índice no encontrado");
                     }
                     else{
-                        System.out.println("En el número de índice "+buscarIndex+" se encuentra el elemento " +buscarIndex.toString());
+                        System.out.println("El elemento encontrado en dicho índice es: " +buscarIndex.toString());
                     }
                     break;
 
                 case "9":
                     System.out.println("¿Qué elemento desea borrar? ingrese su número de índice");
-                    int element = scanner.nextInt();
-                    DoublyLinkedList<String>.Node<String > buscarIndexBorrar = dllist.searchByIndex(scanner.nextInt());
+                    int element = datos.nextInt();
+                    if(dllist.size() == 1){
+                        dllist.deleteFromPosition(0);
+                    }
+                    else{
+                        if(element == 0){
+                            dllist.deleteFromHead();
+                            System.out.println("Elemento eliminado del inicio de la lista");
+                            dllist.traverseForward();
+                        }
+                        else if(element == dllist.size()-1){
+                            dllist.deleteFromTail();
+                            System.out.println("Elemento eliminado del final de la lista");
+                            dllist.traverseForward();
+                        }
+                        else{
+                            dllist.deleteFromPosition(element);
+                            System.out.println("elemento eliminado de la posición" + element);
+                            dllist.traverseForward();
+                        }
+
+                    }
+
+                    /*DoublyLinkedList<String>.Node<String > buscarIndexBorrar = dllist.searchByIndex(scanner.nextInt());
                     if(buscarIndexBorrar== null)
                     {
                         System.out.println("Número de índice no encontrado");
@@ -107,7 +133,7 @@ public class MainDoublyLinkedLists {
                             dllist.deleteFromPosition(element);
                         }
 
-                    }
+                    }*/
                     break;
 
                 case "10":
