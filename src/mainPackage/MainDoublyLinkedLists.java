@@ -15,7 +15,8 @@ public class MainDoublyLinkedLists {
 
         while(!stop.equals("10")){
 
-            System.out.println("\uD83D\uDD01 LISTAS DOBLEMENTE ENLAZADAS \uD83D\uDD01 \n");
+
+            System.out.println("\n\n\uD83D\uDD01 LISTAS DOBLEMENTE ENLAZADAS \uD83D\uDD01 \n");
             System.out.println("1.Insertar al inicio  ");
             System.out.println("2.Insertar al Final");
             System.out.println("3.Recorrer hacia adelante");
@@ -36,6 +37,7 @@ public class MainDoublyLinkedLists {
                 case "1":
                     System.out.println("Escriba el elemento a agregar al inicio: ");
                     dllist.insertAtHead(datos.nextLine());
+                    System.out.println("elemento insertado al inicio");
                     break;
 
                 case "2":
@@ -93,12 +95,13 @@ public class MainDoublyLinkedLists {
                     break;
 
                 case "9":
-                    System.out.println("¿Qué elemento desea borrar? ingrese su número de índice");
-                    int element = datos.nextInt();
-                    if(dllist.size() == 1){
-                        dllist.deleteFromPosition(0);
+                    if(dllist.size() <= 2){
+                        System.out.println("la lista no tiene suficientes elementos para eliminar");
+
                     }
                     else{
+                        System.out.println("¿Qué elemento desea borrar? ingrese su número de índice");
+                        int element = datos.nextInt();
                         if(element == 0){
                             dllist.deleteFromHead();
                             System.out.println("Elemento eliminado del inicio de la lista");
