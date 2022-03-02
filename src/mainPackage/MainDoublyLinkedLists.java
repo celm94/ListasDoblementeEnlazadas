@@ -10,6 +10,7 @@ public class MainDoublyLinkedLists {
     public static void main(String[] args) {
         String stop = "";
         Scanner scanner = new Scanner(System.in);
+        DoublyLinkedList<String> dllist = new DoublyLinkedList<>();
 
         while(true!=stop.equals("10")){
 
@@ -27,7 +28,7 @@ public class MainDoublyLinkedLists {
             System.out.println("ESCOGER UNA OPCIÓN");
 
             stop = scanner.nextLine();
-            DoublyLinkedList<String> dllist = new DoublyLinkedList<>();
+
 
             switch(stop){
 
@@ -43,14 +44,13 @@ public class MainDoublyLinkedLists {
                     break;
 
                 case "3":
-                    System.out.println("Recorriendo hacia adelante");
+
                     dllist.traverseForward();
-                    dllist.toString();
                     break;
 
                 case "4":
-                    System.out.println("Recorriendo hacia atras");
                     dllist.traverseBackward();
+                    scanner.nextLine();
                     break;
 
                 case "5":
